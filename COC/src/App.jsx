@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './components/home';
+import Home from './components/Home';
 import Matches from './components/Matches';
 import Dashboard from './components/Dashboard';
 import Landing from './components/Landing';
+import Game from './components/Game';
 import './App.css';
 
 function App() {
@@ -29,6 +30,12 @@ function App() {
             <>
               <Navbar />
               <Dashboard />
+            </>
+          } />
+          <Route path="/game/:matchId" element={
+            <>
+              <Navbar />
+              <Game />
             </>
           } />
           <Route path="*" element={<Navigate to="/app" replace />} />

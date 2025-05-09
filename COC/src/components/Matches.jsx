@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MatchCard from './MatchCard';
 import CreateMatchModal from './CreateMatchModal';
 import './Matches.css';
 
 const Matches = () => {
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filter, setFilter] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
@@ -43,6 +45,12 @@ const Matches = () => {
       language: 'Any'
     }
   ];
+
+  const handleJoinMatch = (matchId) => {
+    // In a real application, this would make an API call to join the match
+    // For now, we'll just navigate to the game page
+    navigate(`/game/${matchId}`);
+  };
 
   const filteredMatches = matches.filter(match => 
     filter === 'all' ? true : match.level === filter
@@ -92,7 +100,26 @@ const Matches = () => {
 
       <div className="matches-grid">
         {sortedMatches.map(match => (
-          <MatchCard key={match.id} match={match} />
+          <div key={match.id} className="match-card">
+            <div className="match-header">
+              <h2>{match.title}</h2>
+              <span className={`difficulty ${match.level.toLowerCase()}`}>
+                {match.level}
+              </span>
+            </div>
+            <div className="match-info">
+              <p>Players: {match.players}/{match.maxPlayers}</p>
+              <p>Time Limit: {match.timeLimit} minutes</p>
+              <p>Status: <span className={`status ${match.status}`}>{match.status}</span></p>
+            </div>
+            <button
+              className="join-btn"
+              onClick={() => handleJoinMatch(match.id)}
+              disabled={match.players >= match.maxPlayers || match.status === 'active'}
+            >
+              {match.status === 'active' ? 'In Progress' : 'Join Match'}
+            </button>
+          </div>
         ))}
       </div>
 

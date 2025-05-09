@@ -1,0 +1,308 @@
+.game-page {
+  min-height: 100vh;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 2rem;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.game-info h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  background: linear-gradient(45deg, #00ff88, #00b8ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.difficulty {
+  font-family: 'Rajdhani', sans-serif;
+  padding: 0.3rem 1rem;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 15px;
+  color: #00ff88;
+  font-size: 0.9rem;
+}
+
+.game-timer {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+}
+
+.timer {
+  color: #00ff88;
+}
+
+.timer.warning {
+  color: #ff4757;
+  animation: pulse 1s infinite;
+}
+
+.start-game-btn {
+  padding: 0.8rem 2rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  background: linear-gradient(45deg, #00ff88, #00b8ff);
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.start-game-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+.start-game-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.game-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 250px;
+  gap: 2rem;
+  height: calc(100vh - 150px);
+}
+
+.problem-section {
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 15px;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.problem-description h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ff88;
+  margin-bottom: 1rem;
+}
+
+.problem-description p {
+  font-family: 'Rajdhani', sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.examples, .constraints {
+  margin-top: 2rem;
+}
+
+.examples h3, .constraints h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ff88;
+  margin-bottom: 1rem;
+}
+
+.example {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.example p {
+  margin-bottom: 0.5rem;
+}
+
+.constraints ul {
+  list-style: none;
+  padding: 0;
+}
+
+.constraints li {
+  font-family: 'Rajdhani', sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.constraints li::before {
+  content: '•';
+  color: #00ff88;
+  position: absolute;
+  left: 0;
+}
+
+.code-section {
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.language-select {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 15px;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  cursor: pointer;
+}
+
+.submit-btn {
+  padding: 0.5rem 1.5rem;
+  background: linear-gradient(45deg, #00ff88, #00b8ff);
+  color: #000;
+  border: none;
+  border-radius: 15px;
+  font-family: 'Rajdhani', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.code-editor textarea {
+  flex: 1;
+  padding: 1rem;
+  background: #1e1e1e;
+  border: none;
+  color: #fff;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: none;
+}
+
+.code-editor textarea:focus {
+  outline: none;
+}
+
+.players-section {
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 15px;
+  padding: 1.5rem;
+}
+
+.players-section h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ff88;
+  margin-bottom: 1rem;
+}
+
+.players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.player-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.player-name {
+  font-family: 'Rajdhani', sans-serif;
+  color: #fff;
+}
+
+.player-status {
+  font-family: 'Rajdhani', sans-serif;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}
+
+.player-status.ready {
+  background: rgba(0, 255, 136, 0.1);
+  color: #00ff88;
+}
+
+.player-status.playing {
+  background: rgba(0, 184, 255, 0.1);
+  color: #00b8ff;
+}
+
+.player-status.finished {
+  background: rgba(255, 71, 87, 0.1);
+  color: #ff4757;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1200px) {
+  .game-content {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .players-section {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-page {
+    padding: 1rem;
+  }
+
+  .game-content {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .game-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+} 
