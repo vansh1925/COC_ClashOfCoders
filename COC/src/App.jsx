@@ -6,6 +6,10 @@ import Matches from './components/Matches';
 import Dashboard from './components/Dashboard';
 import Landing from './components/Landing';
 import Game from './components/Game';
+import Login from './components/Login';
+import ConnectWallet from './components/ConnectWallet';
+import ChooseMode from './components/ChooseMode';
+import Register from './components/Register';
 import './App.css';
 
 function App() {
@@ -18,6 +22,12 @@ function App() {
             <>
               <Navbar />
               <Home />
+            </>
+          } />
+          <Route path="/choose-mode" element={
+            <>
+              <Navbar />
+              <ChooseMode />
             </>
           } />
           <Route path="/matches" element={
@@ -38,6 +48,9 @@ function App() {
               <Game />
             </>
           } />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/connect-wallet" element={<ConnectWallet />} />
           <Route path="*" element={<Navigate to="/app" replace />} />
         </Routes>
       </div>

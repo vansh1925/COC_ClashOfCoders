@@ -1,8 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate('/choose-mode');
+  };
+
   return (
     <nav className="navbar">
       <div className="nav-brand">
@@ -12,8 +18,8 @@ const Navbar = () => {
         <Link to="/app" className="nav-link">Home</Link>
         <Link to="/matches" className="nav-link">Matchmaking</Link>
         <Link to="/dashboard" className="nav-link">Dashboard</Link>
-        <button className="connect-wallet-btn">
-          Connect Wallet
+        <button className="get-started-btn" onClick={handleGetStarted}>
+          Get Started
         </button>
       </div>
     </nav>

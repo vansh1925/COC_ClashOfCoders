@@ -25,9 +25,6 @@ const Home = () => {
             <p>Grow your skills and climb the ranks</p>
           </div>
         </div>
-        <Link to="/matches" className="start-battle-btn">
-          Start Battle
-        </Link>
       </div>
 
       <div className="how-it-works">

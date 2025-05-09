@@ -69,23 +69,6 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-.start-battle-btn {
-  display: inline-block;
-  padding: 1rem 3rem;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.2rem;
-  background: linear-gradient(45deg, #00ff88, #00b8ff);
-  color: #000;
-  text-decoration: none;
-  border-radius: 30px;
-  transition: all 0.3s ease;
-}
-
-.start-battle-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
-}
-
 .how-it-works {
   padding: 6rem 2rem;
   text-align: center;
@@ -161,14 +144,17 @@
 }
 
 @media (max-width: 768px) {
+  .hero-features {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+  
   .hero-title {
     font-size: 3rem;
   }
-
-  .hero-features,
-  .steps,
-  .stats-section {
-    grid-template-columns: 1fr;
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
   }
 
   .hero-section,
