@@ -1,14 +1,67 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Landing.css';
 
 const Landing = () => {
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [codeText, setCodeText] = useState('');
+  const navigate = useNavigate();
+
+  const codeSnippet = `class ClashOfCoders {
+  constructor() {
+    this.battlefield = new Battlefield();
+    this.players = new Set();
+  }
+
+  async enterBattlefield() {
+    await this.initialize();
+    return this.battlefield;
+  }
+}`;
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      if (currentIndex <= codeSnippet.length) {
+        setCodeText(codeSnippet.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleEnter = () => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      navigate('/app', { replace: true });
+    }, 1500);
+  };
+
   return (
-    <div className="landing-container">
-      <div className="content">
-        <h1 className="title">ClashOfCoders</h1>
-        <p className="subtitle">Enter the Decentralized Coding Battlefield</p>
-        <button className="connect-wallet-btn">
-          Connect Wallet
+    <div className={`landing ${isAnimating ? 'animate-out' : ''}`}>
+      <div className="landing-content">
+        <div className="code-container">
+          <div className="code-header">
+            <div className="code-dot red"></div>
+            <div className="code-dot yellow"></div>
+            <div className="code-dot green"></div>
+          </div>
+          <pre className="code-display">
+            <code>{codeText}</code>
+          </pre>
+        </div>
+        <div className="tagline">
+          <span className="tagline-text">Where Code Meets Competition</span>
+        </div>
+        <button 
+          className="enter-btn"
+          onClick={handleEnter}
+          disabled={isAnimating}
+        >
+          Enter Battlefield
         </button>
       </div>
     </div>
