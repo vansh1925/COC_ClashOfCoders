@@ -17,6 +17,7 @@ const Navbar = () => {
       <div className="nav-links">
         <Link to="/app" className="nav-link">Home</Link>
         <Link to="/matches" className="nav-link">Matchmaking</Link>
+        <Link to="/leaderboard" className="nav-link">Leaderboard</Link>
         <Link to="/dashboard" className="nav-link">Dashboard</Link>
         <button className="get-started-btn" onClick={handleGetStarted}>
           Get Started

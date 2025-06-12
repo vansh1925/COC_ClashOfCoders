@@ -10,6 +10,7 @@ import Login from './components/Login';
 import ConnectWallet from './components/ConnectWallet';
 import ChooseMode from './components/ChooseMode';
 import Register from './components/Register';
+import Leaderboard from './components/Leaderboard';
 import './App.css';
 
 function App() {
@@ -34,6 +35,12 @@ function App() {
             <>
               <Navbar />
               <Matches />
+            </>
+          } />
+          <Route path="/leaderboard" element={
+            <>
+              <Navbar />
+              <Leaderboard />
             </>
           } />
           <Route path="/dashboard" element={

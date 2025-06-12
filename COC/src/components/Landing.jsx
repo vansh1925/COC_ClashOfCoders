@@ -54,7 +54,7 @@ const Landing = () => {
           </pre>
         </div>
         <div className="tagline">
-          <span className="tagline-text">Where Code Meets Competition</span>
+          <span className="tagline-text">"Clash of Coders — A real-time coding battle arena where skill meets thrill, and every match brings rewards."</span>
         </div>
         <button 
           className="enter-btn"
