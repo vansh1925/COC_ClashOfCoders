@@ -12,6 +12,14 @@ import ChooseMode from './components/ChooseMode';
 import Register from './components/Register';
 import Leaderboard from './components/Leaderboard';
 import './App.css';
+import { useAuth } from '@clerk/clerk-react';
+
+function ProtectedRoute({ children }) {
+  const { isLoaded, isSignedIn } = useAuth();
+  if (!isLoaded) return null; // or a loading spinner
+  if (!isSignedIn) return <Navigate to="/login" replace />;
+  return children;
+}
 
 function App() {
   return (
@@ -26,34 +34,34 @@ function App() {
             </>
           } />
           <Route path="/choose-mode" element={
-            <>
+            <ProtectedRoute>
               <Navbar />
               <ChooseMode />
-            </>
+            </ProtectedRoute>
           } />
           <Route path="/matches" element={
-            <>
+            <ProtectedRoute>
               <Navbar />
               <Matches />
-            </>
+            </ProtectedRoute>
           } />
           <Route path="/leaderboard" element={
-            <>
+            <ProtectedRoute>
               <Navbar />
               <Leaderboard />
-            </>
+            </ProtectedRoute>
           } />
           <Route path="/dashboard" element={
-            <>
+            <ProtectedRoute>
               <Navbar />
               <Dashboard />
-            </>
+            </ProtectedRoute>
           } />
           <Route path="/game/:matchId" element={
-            <>
+            <ProtectedRoute>
               <Navbar />
               <Game />
-            </>
+            </ProtectedRoute>
           } />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
