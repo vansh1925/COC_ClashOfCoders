@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link,NavLink ,useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -15,10 +15,10 @@ const Navbar = () => {
         <Link to="/app">ClashOfCoders</Link>
       </div>
       <div className="nav-links">
-        <Link to="/app" className="nav-link">Home</Link>
-        <Link to="/matches" className="nav-link">Matchmaking</Link>
-        <Link to="/leaderboard" className="nav-link">Leaderboard</Link>
-        <Link to="/dashboard" className="nav-link">Dashboard</Link>
+        <NavLink to="/app" className={({ isActive }) => isActive ? "nav-active nav-link" : "nav-link"}>Home</NavLink>
+        <NavLink to="/matches" className={({ isActive }) => isActive ? "nav-active nav-link" : "nav-link"}>Matchmaking</NavLink>
+        <NavLink to="/leaderboard" className={({ isActive }) => isActive ? "nav-active nav-link" : "nav-link"}>Leaderboard</NavLink>
+        <NavLink to="/dashboard" className={({ isActive }) => isActive ? "nav-active nav-link" : "nav-link"}>Dashboard</NavLink>
         <button className="get-started-btn" onClick={handleGetStarted}>
           Get Started
         </button>

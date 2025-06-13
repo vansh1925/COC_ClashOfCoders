@@ -40,7 +40,7 @@
   border-radius: 20px;
 }
 
-.nav-link:hover {
+.nav-link:hover, .nav-active {
   color: #00ff88;
   background: rgba(0, 255, 136, 0.1);
   text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
