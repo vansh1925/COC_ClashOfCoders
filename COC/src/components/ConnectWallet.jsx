@@ -15,8 +15,8 @@ const ConnectWallet = () => {
       try {
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
         console.log('Connected account:', accounts[0]);
-        // After successful connection, navigate to dashboard
-        navigate('/dashboard');
+        // After successful connection, navigate to matches
+        navigate('/matches');
       } catch (error) {
         console.error('Error connecting wallet:', error);
         setError('Failed to connect wallet. Please try again.');

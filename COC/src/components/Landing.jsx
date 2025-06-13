@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Landing.css';
-import { useAuth } from '@clerk/clerk-react';
 
 const Landing = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [codeText, setCodeText] = useState('');
-  const { isSignedIn } = useAuth();
   const navigate = useNavigate();
 
   const codeSnippet = `class ClashOfCoders {
@@ -38,11 +36,7 @@ const Landing = () => {
   const handleEnter = () => {
     setIsAnimating(true);
     setTimeout(() => {
-      if (isSignedIn) {
-        navigate('/choose-mode', { replace: true });
-      } else {
-        navigate('/app', { replace: true });
-      }
+      navigate('/app', { replace: true });
     }, 1500);
   };
 

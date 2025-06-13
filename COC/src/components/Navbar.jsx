@@ -10,9 +10,7 @@ const Navbar = () => {
   const clerk = useClerk();
 
   const handleGetStarted = () => {
-    if (isSignedIn) {
-      navigate('/choose-mode');
-    } else {
+    if (!isSignedIn) {
       navigate('/login');
     }
   };
@@ -29,9 +27,13 @@ const Navbar = () => {
       </div>
       <div className="nav-links">
         <NavLink to="/app" className={({ isActive }) => isActive ? "nav-active nav-link" : "nav-link"}>Home</NavLink>
-        <NavLink to="/matches" className={({ isActive }) => isActive ? "nav-active nav-link" : "nav-link"}>Matchmaking</NavLink>
-        <NavLink to="/leaderboard" className={({ isActive }) => isActive ? "nav-active nav-link" : "nav-link"}>Leaderboard</NavLink>
-        <NavLink to="/dashboard" className={({ isActive }) => isActive ? "nav-active nav-link" : "nav-link"}>Dashboard</NavLink>
+        {isSignedIn && (
+          <>
+            <NavLink to="/matches" className={({ isActive }) => isActive ? "nav-active nav-link" : "nav-link"}>Matchmaking</NavLink>
+            <NavLink to="/leaderboard" className={({ isActive }) => isActive ? "nav-active nav-link" : "nav-link"}>Leaderboard</NavLink>
+            <NavLink to="/dashboard" className={({ isActive }) => isActive ? "nav-active nav-link" : "nav-link"}>Dashboard</NavLink>
+          </>
+        )}
         {isSignedIn ? (
           <button className="get-started-btn" onClick={handleSignOut}>
             Sign Out

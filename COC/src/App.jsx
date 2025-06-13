@@ -44,10 +44,10 @@ function App() {
           <Route
             path="/choose-mode"
             element={
-              <ProtectedRoute>
+              <>
                 <Navbar />
                 <ChooseMode />
-               </ProtectedRoute>
+              </>
             }
           />
           <Route

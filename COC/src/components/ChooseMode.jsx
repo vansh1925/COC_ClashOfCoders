@@ -1,12 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth, SignInButton } from '@clerk/clerk-react';
 import './ChooseMode.css';
 
 const ChooseMode = () => {
   const navigate = useNavigate();
+  const { isSignedIn } = useAuth();
 
   const handleWeb2Click = () => {
-    navigate('/matches');
+    if (isSignedIn) {
+      navigate('/matches');
+    }
   };
 
   const handleWeb3Click = () => {
@@ -25,9 +29,17 @@ const ChooseMode = () => {
             <p>📈 Track your progress</p>
             <p>💫 Free to play</p>
           </div>
-          <button onClick={handleWeb2Click} className="mode-button">
-            Continue
-          </button>
+          {isSignedIn ? (
+            <button onClick={handleWeb2Click} className="mode-button">
+              Continue
+            </button>
+          ) : (
+            <SignInButton mode="modal" fallbackRedirectUrl="/matches">
+              <button className="mode-button">
+                Continue
+              </button>
+            </SignInButton>
+          )}
         </div>
 
         <div className="mode-card web3">
