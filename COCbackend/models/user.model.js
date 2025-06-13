@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
   clerkId: { type: String, required: true, unique: true }, // From Clerk
-  username: { type: String, required: true },
+  username: { type: String},
   email: { type: String },
   xp: { type: Number, default: 0 },
   level: { type: Number, default: 1 },

@@ -1,6 +1,8 @@
 import express from "express"
 import cors from "cors"
 const app = express()
+import { clerkMiddleware } from "@clerk/clerk-sdk-node";
+import userRoutes from "./routes/user.routes.js"
 
 //middlewares
 // app.use(cors({
@@ -9,10 +11,12 @@ const app = express()
 //     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 //     allowedHeaders: ["Content-Type", "Authorization", "Accept"],
 // }))
+app.use(clerkMiddleware());                 //So that req.auth is available on all routes.
 app.use(express.json({ limit: "20kb" }))
 
 
 
 //routes
+app.use('/api/user', userRoutes);
 
 export { app };
