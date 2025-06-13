@@ -41,7 +41,7 @@ const Landing = () => {
       if (isSignedIn) {
         navigate('/choose-mode', { replace: true });
       } else {
-        navigate('/login', { replace: true });
+        navigate('/app', { replace: true });
       }
     }, 1500);
   };

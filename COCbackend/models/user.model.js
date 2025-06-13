@@ -7,7 +7,10 @@ const userSchema = new mongoose.Schema({
   xp: { type: Number, default: 0 },
   level: { type: Number, default: 1 },
   totalWins: { type: Number, default: 0 },
-  matchHistory: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Match' }]
+  matchHistory: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Match' }],
+  //web3 fields
+  walletAddress: { type: String, default: null }, // user connects wallet in Web3 mode
+  isWalletConnected: { type: Boolean, default: false },
 }, {
     timestamps: true // Automatically adds createdAt and updatedAt fields
 });

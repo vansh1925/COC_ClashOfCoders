@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link,NavLink ,useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import { useAuth, useClerk } from '@clerk/clerk-react';
@@ -6,6 +5,8 @@ import { useAuth, useClerk } from '@clerk/clerk-react';
 const Navbar = () => {
   const navigate = useNavigate();
   const { isSignedIn } = useAuth();
+  console.log('Navbar isSignedIn:', isSignedIn);
+  
   const clerk = useClerk();
 
   const handleGetStarted = () => {

@@ -6,7 +6,7 @@ const ChooseMode = () => {
   const navigate = useNavigate();
 
   const handleWeb2Click = () => {
-    navigate('/login');
+    navigate('/matches');
   };
 
   const handleWeb3Click = () => {
@@ -26,7 +26,7 @@ const ChooseMode = () => {
             <p>💫 Free to play</p>
           </div>
           <button onClick={handleWeb2Click} className="mode-button">
-            Continue with Email
+            Continue
           </button>
         </div>
 
