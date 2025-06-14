@@ -10,7 +10,6 @@ const userSchema = new mongoose.Schema({
   matchHistory: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Match' }],
   //web3 fields
   walletAddress: { type: String, default: null }, // user connects wallet in Web3 mode
-  isWalletConnected: { type: Boolean, default: false },
 }, {
     timestamps: true // Automatically adds createdAt and updatedAt fields
 });

@@ -6,7 +6,7 @@ const matchSchema = new mongoose.Schema({
   uniqueCode: { type: String }, // for private matches
   status: { type: String, enum: ['waiting', 'ongoing', 'completed'], default: 'waiting' },
   difficulty: { type: String, enum: ['easy', 'medium', 'hard'], required: true },
-  dataStructure: { type: String }, // e.g., "Array", "DP", etc.
+  topic: { type: String }, // e.g., "Array", "DP", etc.
   timeLimit: { type: Number, required: true }, // in seconds
   maxPlayers: { type: Number, default: 2 },
   players: [

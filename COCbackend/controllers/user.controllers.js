@@ -1,7 +1,7 @@
-import User from '../models/User.js';
+import User from '../models/user.model.js';
 
 
-// --> /api/user/sync
+// POST /api/user/sync
 // This endpoint is used to sync the user data with Clerk.
 const syncUser = async (req, res) => {
   const { userId, email } = req.auth;
@@ -25,7 +25,7 @@ const syncUser = async (req, res) => {
   }
 };
 
-// --> /api/user/:clerkId
+// GET /api/user/:clerkId
 /**
  * This endpoint retrieves a user by their Clerk ID.
  * It populates the matchHistory field with the related Match documents.
@@ -45,5 +45,24 @@ const getUser = async (req, res) => {
   }
 };
 
-export { syncUser, getUser };
+// PATCH /api/user/connect-wallet
+// This endpoint allows a user to connect their wallet address for already signed/logged-in users.
+const connectWallet = async (req, res) => {
+  const { userId } = req.auth;
+  const { walletAddress } = req.body;
+
+  try {
+    const user = await User.findOneAndUpdate(
+      { clerkId: userId },
+      { walletAddress },
+      { new: true }
+    );
+    res.status(200).json({ success: true, user });
+  } catch (err) {
+    console.error('Wallet connect failed:', err);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+};
+
+export { syncUser, getUser, connectWallet };
 // Exporting the functions to be used in routes
